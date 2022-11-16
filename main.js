@@ -22,79 +22,76 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
 
-
-// Add your functions below:
-
 // Find out if a credit card number is valid or not
 
-  function validateCred(array) {
-    const reversed = [];
-    let sum = 0;
+function validateCred(array) {
+  const reversed = [];
+  let sum = 0;
 
-    for (let i = array.length -1; i >= 0; i--) {
-      reversed.push(array[i]);
-    }
+  for (let i = array.length -1; i >= 0; i--) {
+    reversed.push(array[i]);
+  }
 
-    for (let i = 0; i < reversed.length; i++) {
-      let currValue = reversed[i];
-      if (i % 2 != 0) {
-        if (reversed[i] > 4) {
-          currValue = (currValue * 2) - 9;
-        } else {
-          currValue *= 2;
-        }
-      } sum += currValue;
-    } 
-    return sum % 2 === 0;
+  for (let i = 0; i < reversed.length; i++) {
+    let currValue = reversed[i];
+    if (i % 2 != 0) {
+      if (reversed[i] > 4) {
+        currValue = (currValue * 2) - 9;
+      } else {
+        currValue *= 2;
+      }
+    } sum += currValue;
   } 
+  return sum % 2 === 0;
+} 
 
   // Save all the invalid cards in an array
 
-  function findInvalidCards(nestedArr) {
-    const invalidCard = [];
+function findInvalidCards(nestedArr) {
+  const invalidCard = [];
 
-    for (let i = 0; i < nestedArr.length; i++) {
-      let currCred = nestedArr[i];
-      if (!validateCred(currCred)) {
-        invalidCard.push(currCred);
-      } 
+  for (let i = 0; i < nestedArr.length; i++) {
+    let currCred = nestedArr[i];
+    if (!validateCred(currCred)) {
+      invalidCard.push(currCred);
     } 
-    return invalidCard;
-  }
+  } 
+  return invalidCard;
+}
 
   // Find out to which company these invalid cards belong 
 
 
-  function idInvalidCardCompanies(invalidCards) {
-    const companies = [];
-    for (let i = 0; i < invalidCards.length; i++) {
-      switch (invalidCards[i][0]) {
-        case 3:
-          if (companies.indexOf('Amex') === -1) {
-            companies.push('Amex');
-          }
-          break;
-        case 4:
-          if (companies.indexOf('Visa') === -1) {
-            companies.push('Visa');
-          }
-          break;
-        case 5:
-          if (companies.indexOf('Mastercard') === -1) {
-            companies.push('Mastercard');
-          }
-          break;
-        case 6: 
-          if (companies.indexOf('Discover') === -1) {
-            companies.push('Discover');
-          }
-          break;
-        default:
-          console.log('Company not found')  
-      }
+function idInvalidCardCompanies(invalidCards) {
+  const companies = [];
+  for (let i = 0; i < invalidCards.length; i++) {
+    switch (invalidCards[i][0]) {
+      case 3:
+        if (companies.indexOf('Amex') === -1) {
+          companies.push('Amex');
+        }
+        break;
+      case 4:
+        if (companies.indexOf('Visa') === -1) {
+          companies.push('Visa');
+        }
+        break;
+      case 5:
+        if (companies.indexOf('Mastercard') === -1) {
+          companies.push('Mastercard');
+        }
+        break;
+      case 6: 
+        if (companies.indexOf('Discover') === -1) {
+          companies.push('Discover');
+        }
+        break;
+      default:
+        console.log('Company not found')  
     }
-    return companies;
   }
+  return companies;
+}
 
 
 
