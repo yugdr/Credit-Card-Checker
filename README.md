@@ -1,2 +1,2 @@
 # Credit-Card-Checker
-This is a simple project to practice javascript skills
+In this project, I created functions and loops based on Luhn algorithm to check if credit cards are valid.
